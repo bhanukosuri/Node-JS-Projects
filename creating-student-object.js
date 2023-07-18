@@ -1,15 +1,23 @@
-const productOfTwo = (a, b) => a * b;
+class Student {
+  constructor(name, age, marks) {
+    this.name = name;
+    this.age = age;
+    this.marks = marks;
+  }
 
-console.log(productOfTwo(3, 5));
+  setPlacementAge(minPlacementAge) {
+    return (minMarks) => {
+      if (this.age > minPlacementAge && this.marks > minMarks) {
+        console.log(this.name + " is ready for placements");
+      } else {
+        console.log(this.name + " is not ready for the placements");
+      }
+    };
+  }
+}
 
-const student = {
-  name: "Bhanu",
-  age: 33,
-  greet() {
-    console.log(`Hi, I am ${this.name}`);
-  },
-};
+const Bhanu = new Student("Bhanu", 33, 70);
+const Prakash = new Student("Prakash", 20, 35);
 
-console.log(student);
-
-student.greet();
+Bhanu.setPlacementAge(24)(60);
+Prakash.setPlacementAge(24)(60);
