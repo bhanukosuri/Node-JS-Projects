@@ -1,15 +1,17 @@
-const http = require('http')
+const express = require('express')
 
-const routes = require('./routes')
+const app = express()
 
-const { parse } = require('path')
-const requestHandler = require('./routes')
+app.use((req, res, next) => {
+    console.log('In the middlewear')
+    next()
+})
 
-// const server = http.createServer(routes)
+app.use((req, res, next) => {
+    console.log('In another middlewear')
+    res.send('<h1>Hello from Express</h1>')
+    // res.send({ "name": "Bhanu" })
+})
 
-console.log(routes.someText)
-const server = http.createServer(routes.handler)
-
-
-server.listen(3000)
+app.listen(3000)
 
